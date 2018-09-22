@@ -20,3 +20,5 @@ PRODUCT_DEVICE := lito
 PRODUCT_BRAND := qti
 PRODUCT_MODEL := lito
 PRODUCT_MANUFACTURER := qualcomm
+
+PRODUCT_GMS_CLIENTID_BASE := android-qualcomm
