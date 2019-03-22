@@ -134,6 +134,7 @@ KERNEL_MODULES_OUT := out/target/product/$(PRODUCT_NAME)/$(KERNEL_MODULES_INSTAL
 -include $(TOPDIR)hardware/qcom/audio/configs/lito/lito.mk
 -include $(TOPDIR)vendor/qcom/opensource/audio-hal/primary-hal/configs/lito/lito.mk
 
+USE_CUSTOM_AUDIO_POLICY := 0
 #Enable full treble flag
 PRODUCT_FULL_TREBLE_OVERRIDE := true
 PRODUCT_VENDOR_MOVE_ENABLED := true
