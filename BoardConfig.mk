@@ -127,3 +127,6 @@ BOARD_KERNEL_SEPARATED_DTBO := true
 #################################################################################
 
 TARGET_NO_TELEPHONY := true
+
+# TODO(b/124534788): Temporarily allow eng and debug LOCAL_MODULE_TAGS
+BUILD_BROKEN_ENG_DEBUG_TAGS:=true
