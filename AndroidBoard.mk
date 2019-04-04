@@ -101,6 +101,13 @@ $(foreach f, $(RADIO_FILES), \
 endif
 
 #----------------------------------------------------------------------
+# wlan specific
+#----------------------------------------------------------------------
+ifeq ($(strip $(BOARD_HAS_QCOM_WLAN)),true)
+include device/qcom/wlan/lito/AndroidBoardWlan.mk
+endif
+
+#----------------------------------------------------------------------
 # extra images
 #----------------------------------------------------------------------
 include device/qcom/common/generate_extra_images.mk

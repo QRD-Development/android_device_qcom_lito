@@ -175,6 +175,11 @@ TARGET_MOUNT_POINTS_SYMLINKS := false
 PRODUCT_BOOT_JARS += telephony-ext
 PRODUCT_PACKAGES += telephony-ext
 
+#----------------------------------------------------------------------
+# wlan specific
+#----------------------------------------------------------------------
+include device/qcom/wlan/lito/wlan.mk
+
 ###################################################################################
 # This is the End of target.mk file.
 # Now, Pickup other split product.mk files:
