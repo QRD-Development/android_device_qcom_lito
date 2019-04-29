@@ -125,8 +125,6 @@ DEVICE_FRAMEWORK_MANIFEST_FILE := device/qcom/lito/framework_manifest.xml
 DEVICE_MANIFEST_FILE := device/qcom/lito/manifest.xml
 DEVICE_MATRIX_FILE   := device/qcom/common/compatibility_matrix.xml
 
-# MSM IRQ Balancer configuration file
-PRODUCT_COPY_FILES += device/qcom/lito/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
 #Audio DLKM
 AUDIO_DLKM := audio_apr.ko
 AUDIO_DLKM += audio_q6_pdr.ko
