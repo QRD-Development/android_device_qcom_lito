@@ -160,3 +160,6 @@ BOARD_VENDOR_KERNEL_MODULES := \
     $(KERNEL_MODULES_OUT)/audio_native.ko \
     $(KERNEL_MODULES_OUT)/audio_machine_lito.ko \
     $(KERNEL_MODULES_OUT)/audio_snd_event.ko
+
+# Enable QG user space
+PMIC_QG_SUPPORT := true
