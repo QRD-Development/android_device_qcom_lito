@@ -170,6 +170,8 @@ BOARD_SYSTEMSDK_VERSIONS := 28
 BOARD_VNDK_VERSION := current
 TARGET_MOUNT_POINTS_SYMLINKS := false
 
+PRODUCT_BOOT_JARS += telephony-ext
+PRODUCT_PACKAGES += telephony-ext
 
 ###################################################################################
 # This is the End of target.mk file.
