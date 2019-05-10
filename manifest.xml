@@ -319,4 +319,13 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <instance>dpmQmiService</instance>
         </interface>
    </hal>
+    <!-- audio HAL extension service -->
+    <hal format="hidl">
+        <name>vendor.qti.hardware.audiohalext</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IAudioHalExt</name>
+        </interface>
+    </hal>
 </manifest>
