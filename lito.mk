@@ -21,8 +21,13 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 # Temporary bring-up config -->
 PRODUCT_SUPPORTS_VERITY := false
 # Temporary bring-up config <--
-
 ###########
+PRODUCT_PROPERTY_OVERRIDES  += \
+     dalvik.vm.heapstartsize=8m \
+     dalvik.vm.heapsize=512m \
+     dalvik.vm.heaptargetutilization=0.75 \
+     dalvik.vm.heapminfree=512k \
+     dalvik.vm.heapmaxfree=8m
 # Target naming
 PRODUCT_NAME := lito
 PRODUCT_DEVICE := lito
@@ -101,8 +106,6 @@ BOARD_FRP_PARTITION_NAME := frp
 
 # Android EGL implementation
 PRODUCT_PACKAGES += libGLES_android
-
--include hardware/qcom/display/config/lito.mk
 
 PRODUCT_PACKAGES += fs_config_files
 PRODUCT_PACKAGES += gpio-keys.kl
