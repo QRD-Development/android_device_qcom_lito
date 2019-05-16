@@ -116,6 +116,12 @@ ADD_RADIO_FILES := true
 #Generate DTBO image
 BOARD_KERNEL_SEPARATED_DTBO := true
 
+#----------------------------------------------------------------------
+# wlan specific
+#----------------------------------------------------------------------
+ifeq ($(strip $(BOARD_HAS_QCOM_WLAN)),true)
+include device/qcom/wlan/lito/BoardConfigWlan.mk
+endif
 
 #################################################################################
 # This is the End of BoardConfig.mk file.
