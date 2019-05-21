@@ -116,6 +116,12 @@ ADD_RADIO_FILES := true
 #Generate DTBO image
 BOARD_KERNEL_SEPARATED_DTBO := true
 
+# Enable sensor multi HAL
+USE_SENSOR_MULTI_HAL := true
+
+# Enable sensor Version V_2
+USE_SENSOR_HAL_VER := 2.0
+
 #----------------------------------------------------------------------
 # wlan specific
 #----------------------------------------------------------------------
