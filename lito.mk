@@ -93,6 +93,9 @@ QMAA_ENABLED_HAL_MODULES :=
 #Default vendor image configuration
 ENABLE_VENDOR_IMAGE := true
 
+# Default A/B configuration
+ENABLE_AB ?= true
+
 # default is nosdcard, S/W button enabled in resource
 PRODUCT_CHARACTERISTICS := nosdcard
 
@@ -104,6 +107,7 @@ PRODUCT_PACKAGES += libGLES_android
 PRODUCT_PACKAGES += fs_config_files
 PRODUCT_PACKAGES += gpio-keys.kl
 
+ifeq ($(ENABLE_AB), true)
 # A/B related packages
 PRODUCT_PACKAGES += update_engine \
     update_engine_client \
@@ -116,7 +120,7 @@ PRODUCT_HOST_PACKAGES += \
     brillo_update_payload
 # Boot control HAL test app
 PRODUCT_PACKAGES_DEBUG += bootctl
-
+endif
 DEVICE_FRAMEWORK_MANIFEST_FILE := device/qcom/lito/framework_manifest.xml
 
 DEVICE_MANIFEST_FILE := device/qcom/lito/manifest.xml
