@@ -56,6 +56,9 @@ on post-fs
 on post-fs-data
     mkdir /vendor/data/tombstones 0771 system system
 
+on early-boot
+    start vendor.sensors
+
 on boot
 #USB controller configuration
     setprop vendor.usb.rndis.func.name "gsi"
