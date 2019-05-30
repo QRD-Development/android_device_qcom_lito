@@ -1,3 +1,6 @@
+# Enable AVB 2.0
+BOARD_AVB_ENABLE := true
+
 # Temporary bring-up config -->
 ALLOW_MISSING_DEPENDENCIES := true
 
@@ -6,7 +9,11 @@ BUILD_BROKEN_DUP_RULES := true
 TEMPORARY_DISABLE_PATH_RESTRICTIONS := true
 export TEMPORARY_DISABLE_PATH_RESTRICTIONS
 
-BOARD_AVB_ENABLE := true
+# Enable chain partition for system, to facilitate system-only OTA in Treble.
+BOARD_AVB_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
+BOARD_AVB_SYSTEM_ALGORITHM := SHA256_RSA2048
+BOARD_AVB_SYSTEM_ROLLBACK_INDEX := 0
+BOARD_AVB_SYSTEM_ROLLBACK_INDEX_LOCATION := 1
 
 BOARD_HAVE_BLUETOOTH := false
 BOARD_HAVE_QCOM_FM := false
