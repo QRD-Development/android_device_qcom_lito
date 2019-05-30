@@ -142,13 +142,6 @@ USE_SENSOR_MULTI_HAL := true
 # Enable sensor Version V_2
 USE_SENSOR_HAL_VER := 2.0
 
-#----------------------------------------------------------------------
-# wlan specific
-#----------------------------------------------------------------------
-ifeq ($(strip $(BOARD_HAS_QCOM_WLAN)),true)
-include device/qcom/wlan/lito/BoardConfigWlan.mk
-endif
-
 #################################################################################
 # This is the End of BoardConfig.mk file.
 # Now, Pickup other split Board.mk files:
@@ -193,3 +186,10 @@ BOARD_VENDOR_KERNEL_MODULES := \
 
 # Enable QG user space
 PMIC_QG_SUPPORT := true
+
+#----------------------------------------------------------------------
+# wlan specific
+#----------------------------------------------------------------------
+ifeq ($(strip $(BOARD_HAS_QCOM_WLAN)),true)
+include device/qcom/wlan/lito/BoardConfigWlan.mk
+endif
