@@ -93,7 +93,6 @@ service vendor.pd_mapper /vendor/bin/pd-mapper
     class core
     user system
     group system
-    disabled
 
 #Peripheral manager
 service vendor.per_mgr /vendor/bin/pm-service
