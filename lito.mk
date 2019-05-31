@@ -48,6 +48,9 @@ TARGET_USES_AOSP := true
 TARGET_USES_AOSP_FOR_AUDIO := false
 TARGET_USES_QCOM_BSP := false
 
+# RRO configuration
+TARGET_USES_RRO := true
+
 ###########
 #QMAA flags starts
 ###########
