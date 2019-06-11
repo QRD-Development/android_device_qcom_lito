@@ -4,6 +4,20 @@ BOARD_AVB_ENABLE := true
 # Temporary bring-up config -->
 ALLOW_MISSING_DEPENDENCIES := true
 
+# For QSSI builds, we should skip building the system image. Instead we build the
+# "non-system" images (that we support).
+
+PRODUCT_BUILD_SYSTEM_IMAGE := false
+PRODUCT_BUILD_SYSTEM_OTHER_IMAGE := false
+PRODUCT_BUILD_VENDOR_IMAGE := true
+PRODUCT_BUILD_PRODUCT_IMAGE := false
+PRODUCT_BUILD_PRODUCT_SERVICES_IMAGE := false
+PRODUCT_BUILD_ODM_IMAGE := false
+PRODUCT_BUILD_CACHE_IMAGE := false
+PRODUCT_BUILD_RAMDISK_IMAGE := true
+PRODUCT_BUILD_USERDATA_IMAGE := true
+
+
 BUILD_BROKEN_PHONY_TARGETS := true
 BUILD_BROKEN_DUP_RULES := true
 TEMPORARY_DISABLE_PATH_RESTRICTIONS := true
@@ -21,7 +35,7 @@ TARGET_DISABLE_PERF_OPTIMIATIONS := false
 
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
-$(call inherit-product, device/qcom/common/common64.mk)
+$(call inherit-product, device/qcom/qssi/common64.mk)
 # Temporary bring-up config <--
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
