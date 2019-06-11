@@ -185,7 +185,10 @@ PRODUCT_PROPERTY_OVERRIDES  += \
 -include $(TOPDIR)hardware/qcom/audio/configs/lito/lito.mk
 -include $(TOPDIR)vendor/qcom/opensource/audio-hal/primary-hal/configs/lito/lito.mk
 
-USE_CUSTOM_AUDIO_POLICY := 0
+# MIDI feature
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.xml
+
 #Enable full treble flag
 PRODUCT_FULL_TREBLE_OVERRIDE := true
 PRODUCT_VENDOR_MOVE_ENABLED := true
