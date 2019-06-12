@@ -1,4 +1,4 @@
-<!-- Copyright (c) 2018 The Linux Foundation. All rights reserved.
+<!-- Copyright (c) 2018-2019 The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -742,4 +742,18 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </interface>
     </hal>
     <!--ANT-->
+
+    <!-- Neural Network HAL -->
+    <hal format="hidl">
+        <name>android.hardware.neuralnetworks</name>
+        <transport>hwbinder</transport>
+        <version>1.2</version>
+        <interface>
+            <name>IDevice</name>
+            <instance>qti-default</instance>
+            <instance>qti-dsp</instance>
+            <instance>qti-gpu</instance>
+            <instance>qti-hta</instance>
+        </interface>
+    </hal>
 </manifest>
