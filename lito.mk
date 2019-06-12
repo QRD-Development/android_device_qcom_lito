@@ -78,6 +78,8 @@ TARGET_USES_QMAA_OVERRIDE_SENSORS := true
 TARGET_KERNEL_VERSION := 4.19
 #Enable llvm support for kernel
 KERNEL_LLVM_SUPPORT := true
+#Enable sd-llvm support for kernel
+KERNEL_SD_LLVM_SUPPORT := true
 
 ###########
 # Target configurations
