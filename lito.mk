@@ -19,6 +19,8 @@ BOARD_HAVE_BLUETOOTH := false
 BOARD_HAVE_QCOM_FM := false
 TARGET_DISABLE_PERF_OPTIMIATIONS := true
 
+TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+
 $(call inherit-product, device/qcom/common/common64.mk)
 # Temporary bring-up config <--
 
