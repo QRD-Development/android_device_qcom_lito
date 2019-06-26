@@ -17,7 +17,7 @@ BOARD_AVB_SYSTEM_ROLLBACK_INDEX_LOCATION := 1
 
 BOARD_HAVE_BLUETOOTH := false
 BOARD_HAVE_QCOM_FM := false
-TARGET_DISABLE_PERF_OPTIMIATIONS := true
+TARGET_DISABLE_PERF_OPTIMIATIONS := false
 
 $(call inherit-product, device/qcom/common/common64.mk)
 # Temporary bring-up config <--
@@ -68,6 +68,7 @@ TARGET_USES_QMAA_OVERRIDE_CAMERA  := true
 TARGET_USES_QMAA_OVERRIDE_GFX     := true
 TARGET_USES_QMAA_OVERRIDE_WFD     := true
 TARGET_USES_QMAA_OVERRIDE_SENSORS := true
+TARGET_USES_QMAA_OVERRIDE_PERF    := true
 
 ###########
 #QMAA flags ends
