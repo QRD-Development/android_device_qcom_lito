@@ -1,6 +1,12 @@
 # Enable AVB 2.0
 BOARD_AVB_ENABLE := true
 
+# Default A/B configuration
+ENABLE_AB ?= true
+
+# Default Dynamic Partition feature configuration
+BOARD_DYNAMIC_PARTITION_ENABLE ?= true
+
 # Temporary bring-up config -->
 ALLOW_MISSING_DEPENDENCIES := true
 
@@ -13,7 +19,11 @@ PRODUCT_BUILD_VENDOR_IMAGE := true
 PRODUCT_BUILD_PRODUCT_IMAGE := false
 PRODUCT_BUILD_PRODUCT_SERVICES_IMAGE := false
 PRODUCT_BUILD_ODM_IMAGE := false
+ifeq ($(ENABLE_AB), true)
 PRODUCT_BUILD_CACHE_IMAGE := false
+else
+PRODUCT_BUILD_CACHE_IMAGE := true
+endif
 PRODUCT_BUILD_RAMDISK_IMAGE := true
 PRODUCT_BUILD_USERDATA_IMAGE := true
 
@@ -25,11 +35,26 @@ BUILD_BROKEN_DUP_RULES := true
 TEMPORARY_DISABLE_PATH_RESTRICTIONS := true
 export TEMPORARY_DISABLE_PATH_RESTRICTIONS
 
+ifneq ($(strip $(BOARD_DYNAMIC_PARTITION_ENABLE)),true)
 # Enable chain partition for system, to facilitate system-only OTA in Treble.
 BOARD_AVB_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
 BOARD_AVB_SYSTEM_ALGORITHM := SHA256_RSA2048
 BOARD_AVB_SYSTEM_ROLLBACK_INDEX := 0
-BOARD_AVB_SYSTEM_ROLLBACK_INDEX_LOCATION := 1
+BOARD_AVB_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
+else
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+PRODUCT_PACKAGES += fastbootd
+ifeq ($(ENABLE_AB), true)
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/fstab_AB_dynamic_partition.qti:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom
+else
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/fstab_non_AB_dynamic_partition.qti:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom
+endif
+BOARD_AVB_VBMETA_SYSTEM := system
+BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
+BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA2048
+BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
+BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
+endif
 
 BOARD_HAVE_BLUETOOTH := false
 BOARD_HAVE_QCOM_FM := false
@@ -121,9 +146,6 @@ QMAA_ENABLED_HAL_MODULES :=
 #Default vendor image configuration
 ENABLE_VENDOR_IMAGE := true
 
-# Default A/B configuration
-ENABLE_AB ?= true
-
 # default is nosdcard, S/W button enabled in resource
 PRODUCT_CHARACTERISTICS := nosdcard
 
@@ -152,6 +174,9 @@ endif
 DEVICE_FRAMEWORK_MANIFEST_FILE := device/qcom/lito/framework_manifest.xml
 
 DEVICE_MANIFEST_FILE := device/qcom/lito/manifest.xml
+ifeq ($(ENABLE_AB), true)
+DEVICE_MANIFEST_FILE += device/qcom/lito/manifest_ab.xml
+endif
 DEVICE_MATRIX_FILE   := device/qcom/common/compatibility_matrix.xml
 
 #Audio DLKM

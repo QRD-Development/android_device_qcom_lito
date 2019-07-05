@@ -48,6 +48,7 @@ storsec.mbn             /dev/block/bootdevice/by-name/storsec
 imagefv.elf             /dev/block/bootdevice/by-name/ImageFv
 vbmeta.img              /dev/block/bootdevice/by-name/vbmeta
 dtbo.img                /dev/block/bootdevice/by-name/dtbo
+vbmeta_system.img       /dev/block/bootdevice/by-name/vbmeta_system
 
 # filename + .bak       backup partition
 
