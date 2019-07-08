@@ -197,6 +197,11 @@ PRODUCT_COPY_FILES += \
 # Powerhint configuration file
 PRODUCT_COPY_FILES += device/qcom/lito/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 
+# Vibrator
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator@1.0-impl \
+    android.hardware.vibrator@1.0-service \
+
 #
 # system prop for opengles version
 #
