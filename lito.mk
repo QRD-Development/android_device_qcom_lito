@@ -230,6 +230,8 @@ TARGET_MOUNT_POINTS_SYMLINKS := false
 PRODUCT_BOOT_JARS += telephony-ext
 PRODUCT_PACKAGES += telephony-ext
 
+PRODUCT_BOOT_JARS += tcmiface
+
 # Vendor property to enable advanced network scanning
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.enableadvancedscan=true
