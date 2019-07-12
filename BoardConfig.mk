@@ -22,6 +22,9 @@ TARGET_NO_BOOTLOADER := false
 TARGET_USES_UEFI := true
 TARGET_NO_KERNEL := false
 
+#Generate DTBO image
+BOARD_KERNEL_SEPARATED_DTBO := true
+
 BOARD_PRESIL_BUILD := true
 -include $(QCPATH)/common/lito/BoardConfigVendor.mk
 
@@ -67,6 +70,10 @@ BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
         BOARD_USES_RECOVERY_AS_BOOT := true
     else
         BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x04000000
+        ifeq ($(BOARD_KERNEL_SEPARATED_DTBO),true)
+            # Enable DTBO for recovery image
+            BOARD_INCLUDE_RECOVERY_DTBO := true
+        endif
     endif
 else
 # Define the Dynamic Partition sizes and groups.
@@ -74,6 +81,10 @@ else
         BOARD_SUPER_PARTITION_SIZE := 12884901888
     else
         BOARD_SUPER_PARTITION_SIZE := 6442450944
+    endif
+    ifeq ($(BOARD_KERNEL_SEPARATED_DTBO),true)
+        # Enable DTBO for recovery image
+        BOARD_INCLUDE_RECOVERY_DTBO := true
     endif
 BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
 BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 6438256640
@@ -156,9 +167,6 @@ endif
 
 #Add non-hlos files to ota packages
 ADD_RADIO_FILES := true
-
-#Generate DTBO image
-BOARD_KERNEL_SEPARATED_DTBO := true
 
 # Enable sensor multi HAL
 USE_SENSOR_MULTI_HAL := true
