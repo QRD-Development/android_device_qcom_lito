@@ -265,6 +265,24 @@ PRODUCT_PROPERTY_OVERRIDES += \
 ro.crypto.volume.filenames_mode = "aes-256-cts" \
 ro.crypto.allow_encrypt_override = true
 
+ # f2fs utilities
+ PRODUCT_PACKAGES += \
+     sg_write_buffer \
+     f2fs_io \
+     check_f2fs
+
+ # Userdata checkpoint
+ PRODUCT_PACKAGES += \
+     checkpoint_gc
+
+ ifeq ($(ENABLE_AB), true)
+  AB_OTA_POSTINSTALL_CONFIG += \
+      RUN_POSTINSTALL_vendor=true \
+      POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
+      FILESYSTEM_TYPE_vendor=ext4 \
+      POSTINSTALL_OPTIONAL_vendor=true
+ endif
+
 #----------------------------------------------------------------------
 # wlan specific
 #----------------------------------------------------------------------
