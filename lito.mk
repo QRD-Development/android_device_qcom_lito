@@ -5,7 +5,7 @@ BOARD_AVB_ENABLE := true
 ENABLE_AB ?= true
 
 # Default Dynamic Partition feature configuration
-BOARD_DYNAMIC_PARTITION_ENABLE ?= true
+BOARD_DYNAMIC_PARTITION_ENABLE ?= false
 
 # Temporary bring-up config -->
 ALLOW_MISSING_DEPENDENCIES := true
