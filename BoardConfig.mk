@@ -177,15 +177,6 @@ USE_SENSOR_HAL_VER := 2.0
 #flag for qspm compilation
 TARGET_USES_QSPM := true
 
-#################################################################################
-# This is the End of BoardConfig.mk file.
-# Now, Pickup other split Board.mk files:
-#################################################################################
-# TODO: Relocate the system Board.mk files pickup into qssi lunch, once it is up.
--include vendor/qcom/defs/board-defs/system/*.mk
--include vendor/qcom/defs/board-defs/vendor/*.mk
-#################################################################################
-
 # TODO(b/124534788): Temporarily allow eng and debug LOCAL_MODULE_TAGS
 BUILD_BROKEN_ENG_DEBUG_TAGS:=true
 
@@ -228,3 +219,12 @@ PMIC_QG_SUPPORT := true
 ifeq ($(strip $(BOARD_HAS_QCOM_WLAN)),true)
 include device/qcom/wlan/lito/BoardConfigWlan.mk
 endif
+
+#################################################################################
+# This is the End of BoardConfig.mk file.
+# Now, Pickup other split Board.mk files:
+#################################################################################
+# TODO: Relocate the system Board.mk files pickup into qssi lunch, once it is up.
+-include vendor/qcom/defs/board-defs/system/*.mk
+-include vendor/qcom/defs/board-defs/vendor/*.mk
+#################################################################################
