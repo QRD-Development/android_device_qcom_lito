@@ -61,8 +61,6 @@ BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
 $(call inherit-product, build/make/target/product/gsi_keys.mk)
 endif
 
-BOARD_HAVE_BLUETOOTH := false
-BOARD_HAVE_QCOM_FM := false
 TARGET_DISABLE_PERF_OPTIMIATIONS := false
 
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
