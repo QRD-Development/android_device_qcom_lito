@@ -92,33 +92,6 @@ TARGET_USES_QCOM_BSP := false
 TARGET_USES_RRO := true
 
 ###########
-#QMAA flags starts
-###########
-#QMAA global flag for modular architecture
-#true means QMAA is enabled for system
-#false means QMAA is disabled for system
-
-TARGET_USES_QMAA := true
-
-#QMAA tech team flag to override global QMAA per tech team
-#true means overriding global QMAA for this tech area
-#false means using global, no override
-
-TARGET_USES_QMAA_OVERRIDE_DISPLAY := true
-TARGET_USES_QMAA_OVERRIDE_AUDIO   := true
-TARGET_USES_QMAA_OVERRIDE_VIDEO   := true
-TARGET_USES_QMAA_OVERRIDE_CAMERA  := true
-TARGET_USES_QMAA_OVERRIDE_GFX     := true
-TARGET_USES_QMAA_OVERRIDE_WFD     := true
-TARGET_USES_QMAA_OVERRIDE_SENSORS := true
-TARGET_USES_QMAA_OVERRIDE_PERF    := true
-TARGET_USES_QMAA_OVERRIDE_VPP     := true
-
-###########
-#QMAA flags ends
-###########
-
-###########
 # Kernel configurations
 TARGET_KERNEL_VERSION := 4.19
 #Enable llvm support for kernel
@@ -132,17 +105,6 @@ KERNEL_SD_LLVM_SUPPORT := true
 QCOM_BOARD_PLATFORMS += lito
 
 TARGET_USES_QSSI := true
-
-TARGET_USES_QMAA := true
-###QMAA Indicator Start###
-
-#Full QMAA HAL List
-QMAA_HAL_LIST :=
-
-#Indicator for each enabled QMAA HAL for this target. Each tech team locally verified their QMAA HAL and ensure code is updated/merged, then add their HAL module name to QMAA_ENABLED_HAL_MODULES as an QMAA enabling completion indicator
-QMAA_ENABLED_HAL_MODULES :=
-
-###QMAA Indicator End###
 
 #Default vendor image configuration
 ENABLE_VENDOR_IMAGE := true
