@@ -124,6 +124,7 @@ PRODUCT_PACKAGES += libGLES_android
 
 PRODUCT_PACKAGES += fs_config_files
 PRODUCT_PACKAGES += gpio-keys.kl
+PRODUCT_PACKAGES += libvolumelistener
 
 ifeq ($(ENABLE_AB), true)
 # A/B related packages
