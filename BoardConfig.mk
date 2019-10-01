@@ -4,7 +4,7 @@
 #
 
 TARGET_BOARD_PLATFORM := lito
-TARGET_BOOTLOADER_BOARD_NAME := msmnile # temporary until Lito is supported by ABL
+#TARGET_BOOTLOADER_BOARD_NAME := msmnile # this should be left empty
 
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
