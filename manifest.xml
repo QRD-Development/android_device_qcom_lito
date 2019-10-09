@@ -793,6 +793,16 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <instance>objectTracker</instance>
         </interface>
     </hal>
+    <!-- CVP hal service -->
+    <hal format="hidl">
+        <name>vendor.qti.hardware.cvp</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ICvp</name>
+            <instance>cvphalservice</instance>
+        </interface>
+    </hal>
     <!-- BluetoothSar service-->
     <hal format="hidl">
         <name>vendor.qti.hardware.bluetooth_sar</name>
