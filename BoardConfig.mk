@@ -242,3 +242,5 @@ endif
 -include vendor/qcom/defs/board-defs/system/*.mk
 -include vendor/qcom/defs/board-defs/vendor/*.mk
 #################################################################################
+
+include device/qcom/sepolicy/SEPolicy.mk
