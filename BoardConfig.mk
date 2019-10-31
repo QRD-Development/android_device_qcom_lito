@@ -4,7 +4,7 @@
 #
 
 TARGET_BOARD_PLATFORM := lito
-TARGET_BOOTLOADER_BOARD_NAME := msmnile # temporary until Lito is supported by ABL
+#TARGET_BOOTLOADER_BOARD_NAME := msmnile # this should be left empty
 
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -117,7 +117,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 TARGET_USES_ION := true
 TARGET_USES_NEW_ION_API :=true
 
-BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200,n8 earlycon=msm_geni_serial,0x888000 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 androidboot.defer_overlayfs_mount=1
+BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200,n8 earlycon=msm_geni_serial,0x888000 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 cgroup.memory=nokmem,nosocket loop.max_part=7
 
 BOARD_KERNEL_BASE        := 0x00000000
 BOARD_KERNEL_PAGESIZE    := 4096
@@ -177,9 +177,6 @@ USE_SENSOR_HAL_VER := 2.0
 #flag for qspm compilation
 TARGET_USES_QSPM := true
 
-# TODO(b/124534788): Temporarily allow eng and debug LOCAL_MODULE_TAGS
-BUILD_BROKEN_ENG_DEBUG_TAGS:=true
-
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_PHONY_TARGETS := true
 BOARD_VENDOR_KERNEL_MODULES := \
@@ -212,6 +209,8 @@ BOARD_VENDOR_KERNEL_MODULES := \
     $(KERNEL_MODULES_OUT)/br_netfilter.ko \
     $(KERNEL_MODULES_OUT)/lcd.ko \
     $(KERNEL_MODULES_OUT)/llcc_perfmon.ko \
+    $(KERNEL_MODULES_OUT)/mpq-adapter.ko \
+    $(KERNEL_MODULES_OUT)/mpq-dmx-hw-plugin.ko
 
 # check for for userdebug and eng build variants and install the appropriate modules
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))

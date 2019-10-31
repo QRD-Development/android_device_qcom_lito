@@ -5,7 +5,9 @@ BOARD_AVB_ENABLE := true
 ENABLE_AB ?= true
 
 # Default Dynamic Partition feature configuration
-BOARD_DYNAMIC_PARTITION_ENABLE ?= false
+BOARD_DYNAMIC_PARTITION_ENABLE ?= true
+
+PRODUCT_SHIPPING_API_LEVEL := 29
 
 # Temporary bring-up config -->
 ALLOW_MISSING_DEPENDENCIES := true
@@ -44,6 +46,8 @@ BOARD_AVB_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
 else
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_PACKAGES += fastbootd
+# Add default implementation of fastboot HAL.
+PRODUCT_PACKAGES += android.hardware.fastboot@1.0-impl-mock
 ifeq ($(ENABLE_AB), true)
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/fstab_AB_dynamic_partition.qti:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom
 else
@@ -54,6 +58,7 @@ BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
 BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA2048
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
+$(call inherit-product, build/make/target/product/gsi_keys.mk)
 endif
 
 BOARD_HAVE_BLUETOOTH := false
@@ -62,10 +67,12 @@ TARGET_DISABLE_PERF_OPTIMIATIONS := false
 
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
+# privapp-permissions whitelisting (To Fix CTS :privappPermissionsMustBeEnforced)
+PRODUCT_PROPERTY_OVERRIDES += ro.control_privapp_permissions=enforce
+
+TARGET_DEFINES_DALVIK_HEAP := true
 $(call inherit-product, device/qcom/qssi/common64.mk)
 # Temporary bring-up config <--
-
-$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
 # Temporary bring-up config -->
 PRODUCT_SUPPORTS_VERITY := false
@@ -74,6 +81,7 @@ PRODUCT_SUPPORTS_VERITY := false
 PRODUCT_PROPERTY_OVERRIDES  += \
      dalvik.vm.heapstartsize=8m \
      dalvik.vm.heapsize=512m \
+     dalvik.vm.heapgrowthlimit=256m \
      dalvik.vm.heaptargetutilization=0.75 \
      dalvik.vm.heapminfree=512k \
      dalvik.vm.heapmaxfree=8m
@@ -84,39 +92,12 @@ PRODUCT_BRAND := qti
 PRODUCT_MODEL := Lito for arm64
 
 
-TARGET_USES_AOSP := true
+TARGET_USES_AOSP := false
 TARGET_USES_AOSP_FOR_AUDIO := false
 TARGET_USES_QCOM_BSP := false
 
 # RRO configuration
 TARGET_USES_RRO := true
-
-###########
-#QMAA flags starts
-###########
-#QMAA global flag for modular architecture
-#true means QMAA is enabled for system
-#false means QMAA is disabled for system
-
-TARGET_USES_QMAA := true
-
-#QMAA tech team flag to override global QMAA per tech team
-#true means overriding global QMAA for this tech area
-#false means using global, no override
-
-TARGET_USES_QMAA_OVERRIDE_DISPLAY := true
-TARGET_USES_QMAA_OVERRIDE_AUDIO   := true
-TARGET_USES_QMAA_OVERRIDE_VIDEO   := true
-TARGET_USES_QMAA_OVERRIDE_CAMERA  := true
-TARGET_USES_QMAA_OVERRIDE_GFX     := true
-TARGET_USES_QMAA_OVERRIDE_WFD     := true
-TARGET_USES_QMAA_OVERRIDE_SENSORS := true
-TARGET_USES_QMAA_OVERRIDE_PERF    := true
-TARGET_USES_QMAA_OVERRIDE_VPP     := true
-
-###########
-#QMAA flags ends
-###########
 
 ###########
 # Kernel configurations
@@ -133,17 +114,6 @@ QCOM_BOARD_PLATFORMS += lito
 
 TARGET_USES_QSSI := true
 
-TARGET_USES_QMAA := true
-###QMAA Indicator Start###
-
-#Full QMAA HAL List
-QMAA_HAL_LIST :=
-
-#Indicator for each enabled QMAA HAL for this target. Each tech team locally verified their QMAA HAL and ensure code is updated/merged, then add their HAL module name to QMAA_ENABLED_HAL_MODULES as an QMAA enabling completion indicator
-QMAA_ENABLED_HAL_MODULES :=
-
-###QMAA Indicator End###
-
 #Default vendor image configuration
 ENABLE_VENDOR_IMAGE := true
 
@@ -157,6 +127,7 @@ PRODUCT_PACKAGES += libGLES_android
 
 PRODUCT_PACKAGES += fs_config_files
 PRODUCT_PACKAGES += gpio-keys.kl
+PRODUCT_PACKAGES += libvolumelistener
 
 ifeq ($(ENABLE_AB), true)
 # A/B related packages
@@ -171,6 +142,15 @@ PRODUCT_HOST_PACKAGES += \
     brillo_update_payload
 # Boot control HAL test app
 PRODUCT_PACKAGES_DEBUG += bootctl
+
+PRODUCT_STATIC_BOOT_CONTROL_HAL := \
+  bootctrl.lito \
+  librecovery_updater_msm \
+  libz \
+  libcutils
+
+PRODUCT_PACKAGES += \
+  update_engine_sideload
 endif
 DEVICE_FRAMEWORK_MANIFEST_FILE := device/qcom/lito/framework_manifest.xml
 
@@ -220,14 +200,15 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.opengles.aep.xml
 
-# Powerhint configuration file
-PRODUCT_COPY_FILES += device/qcom/lito/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
-
 # Vibrator
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
     android.hardware.vibrator@1.0-service \
 
+#servicetracker HAL
+PRODUCT_PACKAGES += \
+    vendor.qti.hardware.servicetracker@1.1-impl \
+    vendor.qti.hardware.servicetracker@1.1-service \
 #
 # system prop for opengles version
 #
@@ -249,7 +230,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_FULL_TREBLE_OVERRIDE := true
 PRODUCT_VENDOR_MOVE_ENABLED := true
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
-BOARD_SYSTEMSDK_VERSIONS := 28
+BOARD_SYSTEMSDK_VERSIONS := 29
 BOARD_VNDK_VERSION := current
 TARGET_MOUNT_POINTS_SYMLINKS := false
 
