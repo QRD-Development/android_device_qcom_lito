@@ -177,8 +177,8 @@ USE_SENSOR_HAL_VER := 2.0
 #flag for qspm compilation
 TARGET_USES_QSPM := true
 
+
 BUILD_BROKEN_DUP_RULES := true
-BUILD_BROKEN_PHONY_TARGETS := true
 BOARD_VENDOR_KERNEL_MODULES := \
     $(KERNEL_MODULES_OUT)/audio_apr.ko \
     $(KERNEL_MODULES_OUT)/audio_q6_pdr.ko \
@@ -242,3 +242,5 @@ endif
 -include vendor/qcom/defs/board-defs/system/*.mk
 -include vendor/qcom/defs/board-defs/vendor/*.mk
 #################################################################################
+
+include device/qcom/sepolicy/SEPolicy.mk
