@@ -268,6 +268,12 @@ ro.crypto.allow_encrypt_override = true
       POSTINSTALL_OPTIONAL_vendor=true
  endif
 
+ifneq ($(GENERIC_ODM_IMAGE),true)
+   PRODUCT_COPY_FILES += device/qcom/lito/manifest-qva.xml:$(TARGET_COPY_OUT_ODM)/etc/vintf/manifest.xml
+else
+   PRODUCT_COPY_FILES += device/qcom/lito/manifest-generic.xml:$(TARGET_COPY_OUT_ODM)/etc/vintf/manifest.xml
+endif
+
 #----------------------------------------------------------------------
 # wlan specific
 #----------------------------------------------------------------------
