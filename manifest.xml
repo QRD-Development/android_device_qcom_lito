@@ -384,16 +384,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
          <instance>default</instance>
        </interface>
    </hal>
-   <!-- IMS CM Service -->
-   <hal format="hidl">
-       <name>com.qualcomm.qti.imscmservice</name>
-       <transport>hwbinder</transport>
-       <version>2.2</version>
-       <interface>
-         <name>IImsCmService</name>
-         <instance>qti.ims.connectionmanagerservice</instance>
-       </interface>
-   </hal>
    <hal format="hidl">
         <name>vendor.qti.data.factory</name>
         <transport>hwbinder</transport>
@@ -433,16 +423,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <instance>slot2</instance>
         </interface>
    </hal>
-   <!-- Data Link Latency -->
-   <hal format="hidl">
-        <name>vendor.qti.hardware.data.latency</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>ILinkLatency</name>
-            <instance>default</instance>
-        </interface>
-   </hal>
    <hal format="hidl">
         <name>vendor.qti.hardware.data.connection</name>
         <transport>hwbinder</transport>
@@ -460,16 +440,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <interface>
             <name>IService</name>
             <instance>default</instance>
-        </interface>
-   </hal>
-   <!-- dpm QMI hal service -->
-   <hal format="hidl">
-        <name>com.qualcomm.qti.dpm.api</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IdpmQmi</name>
-            <instance>dpmQmiService</instance>
         </interface>
    </hal>
 
