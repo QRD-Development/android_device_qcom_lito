@@ -79,7 +79,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.qspm.enable=true
 
 TARGET_DEFINES_DALVIK_HEAP := true
-$(call inherit-product, device/qcom/qssi/common64.mk)
+$(call inherit-product, device/qcom/vendor-common/common64.mk)
 # Temporary bring-up config <--
 
 # Temporary bring-up config -->
