@@ -250,4 +250,8 @@ endif
 -include vendor/qcom/defs/board-defs/vendor/*.mk
 #################################################################################
 
+BUILD_BROKEN_NINJA_USES_ENV_VARS := SDCLANG_AE_CONFIG SDCLANG_CONFIG SDCLANG_SA_ENABLED SDCLANG_CONFIG_AOSP
+# We need this to invoke make to build the kernel, etc.
+BUILD_BROKEN_NINJA_USES_ENV_VARS += TEMPORARY_DISABLE_PATH_RESTRICTIONS
+
 include device/qcom/sepolicy/SEPolicy.mk
