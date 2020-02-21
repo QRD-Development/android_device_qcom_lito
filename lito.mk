@@ -273,9 +273,9 @@ ro.crypto.allow_encrypt_override = true
  endif
 
 ifneq ($(GENERIC_ODM_IMAGE),true)
-   PRODUCT_COPY_FILES += device/qcom/lito/manifest-qva.xml:$(TARGET_COPY_OUT_ODM)/etc/vintf/manifest.xml
+   ODM_MANIFEST_FILES += device/qcom/lito/manifest-qva.xml
 else
-   PRODUCT_COPY_FILES += device/qcom/lito/manifest-generic.xml:$(TARGET_COPY_OUT_ODM)/etc/vintf/manifest.xml
+   ODM_MANIFEST_FILES += device/qcom/lito/manifest-generic.xml
 endif
 
 #----------------------------------------------------------------------
