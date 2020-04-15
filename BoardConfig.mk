@@ -36,6 +36,9 @@ BOARD_PRESIL_BUILD := true
 
 USE_OPENGL_RENDERER := true
 
+# Set SYSTEMEXT_SEPARATE_PARTITION_ENABLE if was not already set (set earlier via build.sh).
+SYSTEMEXT_SEPARATE_PARTITION_ENABLE ?= false
+
 ifeq ($(ENABLE_AB), true)
 # Defines for enabling A/B builds
 AB_OTA_UPDATER := true
@@ -61,9 +64,17 @@ endif
 BOARD_USES_METADATA_PARTITION := true
 
 ifeq ($(ENABLE_AB), true)
+  ifeq ($(SYSTEMEXT_SEPARATE_PARTITION_ENABLE), true)
     TARGET_RECOVERY_FSTAB := device/qcom/lito/recovery_AB_variant.fstab
+  else
+    TARGET_RECOVERY_FSTAB := device/qcom/lito/recovery_AB_variant_noSysext.fstab
+  endif
 else
+  ifeq ($(SYSTEMEXT_SEPARATE_PARTITION_ENABLE), true)
     TARGET_RECOVERY_FSTAB := device/qcom/lito/recovery_non-AB_variant.fstab
+  else
+    TARGET_RECOVERY_FSTAB := device/qcom/lito/recovery_non-AB_variant_noSysext.fstab
+  endif
 endif
 
 ### Dynamic partition Handling
