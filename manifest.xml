@@ -659,9 +659,20 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <instance>default</instance>
         </interface>
     </hal>
-
-
-    <!-- SCVE Panorama hal services -->
+    <!-- Neural Network HAL -->
+    <hal format="hidl">
+        <name>android.hardware.neuralnetworks</name>
+        <transport>hwbinder</transport>
+        <version>1.2</version>
+        <interface>
+            <name>IDevice</name>
+            <instance>qti-default</instance>
+            <instance>qti-dsp</instance>
+            <instance>qti-gpu</instance>
+            <instance>qti-hta</instance>
+        </interface>
+    </hal>
+    <!-- SCVE Panorama hal services
     <hal format="hidl">
         <name>vendor.qti.hardware.scve.panorama</name>
         <transport>hwbinder</transport>
@@ -683,8 +694,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <name>IObjectTracker</name>
             <instance>objectTracker</instance>
         </interface>
-    </hal>
-    <!-- CVP hal service -->
+    </hal> -->
+    <!-- CVP hal service
     <hal format="hidl">
         <name>vendor.qti.hardware.cvp</name>
         <transport>hwbinder</transport>
@@ -693,7 +704,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <name>ICvp</name>
             <instance>cvphalservice</instance>
         </interface>
-    </hal>
+    </hal> -->
     <!-- BluetoothSar service-->
     <hal format="hidl">
         <name>vendor.qti.hardware.bluetooth_sar</name>
