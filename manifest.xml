@@ -227,24 +227,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl">
-        <name>vendor.qti.hardware.wifi.supplicant</name>
-        <transport>hwbinder</transport>
-        <version>2.0</version>
-        <interface>
-            <name>ISupplicantVendor</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.qti.hardware.wifi.hostapd</name>
-        <transport>hwbinder</transport>
-        <version>1.1</version>
-        <interface>
-            <name>IHostapdVendor</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
     <!-- Trusted UI HAL Service -->
     <hal format="hidl">
         <name>vendor.qti.hardware.trustedui</name>
