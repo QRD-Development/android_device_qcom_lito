@@ -231,7 +231,6 @@ BOARD_VENDOR_KERNEL_MODULES := \
     $(KERNEL_MODULES_OUT)/audio_native.ko \
     $(KERNEL_MODULES_OUT)/audio_machine_lito.ko \
     $(KERNEL_MODULES_OUT)/audio_snd_event.ko \
-    $(KERNEL_MODULES_OUT)/br_netfilter.ko \
     $(KERNEL_MODULES_OUT)/lcd.ko \
     $(KERNEL_MODULES_OUT)/llcc_perfmon.ko \
     $(KERNEL_MODULES_OUT)/mpq-adapter.ko \
