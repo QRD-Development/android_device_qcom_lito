@@ -291,6 +291,8 @@ else
    ODM_MANIFEST_FILES += device/qcom/lito/manifest-generic.xml
 endif
 
+PRODUCT_PACKAGES += init.qti.dcvs.sh
+
 #----------------------------------------------------------------------
 # wlan specific
 #----------------------------------------------------------------------
