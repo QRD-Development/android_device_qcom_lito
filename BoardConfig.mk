@@ -37,7 +37,7 @@ BOARD_PRESIL_BUILD := true
 USE_OPENGL_RENDERER := true
 
 # Set SYSTEMEXT_SEPARATE_PARTITION_ENABLE if was not already set (set earlier via build.sh).
-SYSTEMEXT_SEPARATE_PARTITION_ENABLE ?= false
+SYSTEMEXT_SEPARATE_PARTITION_ENABLE = true
 
 ifeq ($(ENABLE_AB), true)
 # Defines for enabling A/B builds
