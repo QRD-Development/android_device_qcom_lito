@@ -726,16 +726,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <instance>dspservice</instance>
         </interface>
     </hal>
-    <!--Servicetracker HAL service -->
-    <hal format="hidl">
-        <name>vendor.qti.hardware.servicetracker</name>
-        <transport>hwbinder</transport>
-        <version>1.1</version>
-        <interface>
-            <name>IServicetracker</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
     <!-- PASR manager service -->
     <hal format="hidl">
         <name>vendor.qti.power.pasrmanager</name>

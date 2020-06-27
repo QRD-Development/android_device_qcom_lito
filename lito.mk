@@ -225,10 +225,6 @@ PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
     android.hardware.vibrator@1.0-service \
 
-#servicetracker HAL
-PRODUCT_PACKAGES += \
-    vendor.qti.hardware.servicetracker@1.1-impl \
-    vendor.qti.hardware.servicetracker@1.1-service \
 #
 # system prop for opengles version
 #
