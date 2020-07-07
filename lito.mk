@@ -22,9 +22,6 @@ ALLOW_MISSING_DEPENDENCIES := true
 # For QSSI builds, we should skip building the system image. Instead we build the
 # "non-system" images (that we support).
 
-# Set SYSTEMEXT_SEPARATE_PARTITION_ENABLE if was not already set (set earlier via build.sh).
-SYSTEMEXT_SEPARATE_PARTITION_ENABLE = true
-
 PRODUCT_BUILD_SYSTEM_IMAGE := false
 PRODUCT_BUILD_SYSTEM_OTHER_IMAGE := false
 PRODUCT_BUILD_VENDOR_IMAGE := true
@@ -44,31 +41,15 @@ TARGET_SKIP_OTATOOLS_PACKAGE := true
 
 BUILD_BROKEN_DUP_RULES := true
 
-ifneq ($(strip $(BOARD_DYNAMIC_PARTITION_ENABLE)),true)
-# Enable chain partition for system, to facilitate system-only OTA in Treble.
-BOARD_AVB_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
-BOARD_AVB_SYSTEM_ALGORITHM := SHA256_RSA2048
-BOARD_AVB_SYSTEM_ROLLBACK_INDEX := 0
-BOARD_AVB_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
-PRODUCT_BUILD_ODM_IMAGE := false
-else
 PRODUCT_BUILD_ODM_IMAGE := true
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_PACKAGES += fastbootd
 # Add default implementation of fastboot HAL.
 PRODUCT_PACKAGES += android.hardware.fastboot@1.0-impl-mock
 ifeq ($(ENABLE_AB), true)
-  ifeq ($(SYSTEMEXT_SEPARATE_PARTITION_ENABLE), true)
     PRODUCT_COPY_FILES += $(LOCAL_PATH)/fstab_AB_dynamic_partition.qti:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom
-  else
-    PRODUCT_COPY_FILES += $(LOCAL_PATH)/fstab_AB_dynamic_partition_noSysext.qti:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom
-  endif
 else
-  ifeq ($(SYSTEMEXT_SEPARATE_PARTITION_ENABLE), true)
     PRODUCT_COPY_FILES += $(LOCAL_PATH)/fstab_non_AB_dynamic_partition.qti:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom
-  else
-    PRODUCT_COPY_FILES += $(LOCAL_PATH)/fstab_non_AB_dynamic_partition_noSysext.qti:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom
-  endif
 endif
 BOARD_AVB_VBMETA_SYSTEM := system
 BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
@@ -76,7 +57,6 @@ BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA2048
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
 $(call inherit-product, build/make/target/product/gsi_keys.mk)
-endif
 
 TARGET_DISABLE_PERF_OPTIMIATIONS := false
 
