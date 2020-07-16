@@ -30,9 +30,6 @@ BOARD_PRESIL_BUILD := true
 
 USE_OPENGL_RENDERER := true
 
-# Set SYSTEMEXT_SEPARATE_PARTITION_ENABLE if was not already set (set earlier via build.sh).
-SYSTEMEXT_SEPARATE_PARTITION_ENABLE = true
-
 ifeq ($(ENABLE_AB), true)
 # Defines for enabling A/B builds
 AB_OTA_UPDATER := true
@@ -58,50 +55,26 @@ endif
 BOARD_USES_METADATA_PARTITION := true
 
 ifeq ($(ENABLE_AB), true)
-  ifeq ($(SYSTEMEXT_SEPARATE_PARTITION_ENABLE), true)
     TARGET_RECOVERY_FSTAB := device/qcom/lito/recovery_AB_variant.fstab
-  else
-    TARGET_RECOVERY_FSTAB := device/qcom/lito/recovery_AB_variant_noSysext.fstab
-  endif
 else
-  ifeq ($(SYSTEMEXT_SEPARATE_PARTITION_ENABLE), true)
     TARGET_RECOVERY_FSTAB := device/qcom/lito/recovery_non-AB_variant.fstab
-  else
-    TARGET_RECOVERY_FSTAB := device/qcom/lito/recovery_non-AB_variant_noSysext.fstab
-  endif
 endif
 
 ### Dynamic partition Handling
-ifneq ($(strip $(BOARD_DYNAMIC_PARTITION_ENABLE)),true)
-BOARD_VENDORIMAGE_PARTITION_SIZE := 1073741824
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3221225472
-BOARD_ODMIMAGE_PARTITION_SIZE := 67108864
-BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
-    ifeq ($(ENABLE_AB), true)
-        TARGET_NO_RECOVERY := true
-        BOARD_USES_RECOVERY_AS_BOOT := true
+# Define the Dynamic Partition sizes and groups.
+ifeq ($(ENABLE_AB), true)
+    ifeq ($(ENABLE_VIRTUAL_AB), true)
+        BOARD_SUPER_PARTITION_SIZE := 6442450944
     else
-        BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x04000000
-        ifeq ($(BOARD_KERNEL_SEPARATED_DTBO),true)
-            # Enable DTBO for recovery image
-            BOARD_INCLUDE_RECOVERY_DTBO := true
-        endif
+        BOARD_SUPER_PARTITION_SIZE := 12884901888
     endif
 else
-# Define the Dynamic Partition sizes and groups.
-    ifeq ($(ENABLE_AB), true)
-        ifeq ($(ENABLE_VIRTUAL_AB), true)
-            BOARD_SUPER_PARTITION_SIZE := 6442450944
-        else
-            BOARD_SUPER_PARTITION_SIZE := 12884901888
-        endif
-    else
-        BOARD_SUPER_PARTITION_SIZE := 6442450944
-    endif
-    ifeq ($(BOARD_KERNEL_SEPARATED_DTBO),true)
-        # Enable DTBO for recovery image
-        BOARD_INCLUDE_RECOVERY_DTBO := true
-    endif
+    BOARD_SUPER_PARTITION_SIZE := 6442450944
+endif
+ifeq ($(BOARD_KERNEL_SEPARATED_DTBO),true)
+    # Enable DTBO for recovery image
+    BOARD_INCLUDE_RECOVERY_DTBO := true
+endif
 BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
 BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 6438256640
 BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := vendor odm
@@ -109,7 +82,6 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x06000000
 TARGET_COPY_OUT_ODM := odm
 BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_EXT4_SHARE_DUP_BLOCKS := true
-endif
 ### Dynamic partition Handling
 
 #Enable compilation of oem-extensions to recovery

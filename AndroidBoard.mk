@@ -1,8 +1,5 @@
 LOCAL_PATH := $(call my-dir)
 
-# Set SYSTEMEXT_SEPARATE_PARTITION_ENABLE if was not already set (set earlier via build.sh).
-SYSTEMEXT_SEPARATE_PARTITION_ENABLE = true
-
 #----------------------------------------------------------------------
 # Host compiler configs
 #----------------------------------------------------------------------
@@ -52,39 +49,17 @@ LOCAL_SRC_FILES    := $(LOCAL_MODULE)
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
-ifeq ($(strip $(BOARD_DYNAMIC_PARTITION_ENABLE)),true)
 include $(CLEAR_VARS)
 LOCAL_MODULE       := fstab.qcom
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
 ifeq ($(ENABLE_AB), true)
-ifeq ($(SYSTEMEXT_SEPARATE_PARTITION_ENABLE), true)
 LOCAL_SRC_FILES    := fstab_AB_dynamic_partition.qti
 else
-LOCAL_SRC_FILES    := fstab_AB_dynamic_partition_noSysext.qti
-endif
-else
-ifeq ($(SYSTEMEXT_SEPARATE_PARTITION_ENABLE), true)
 LOCAL_SRC_FILES    := fstab_non_AB_dynamic_partition.qti
-else
-LOCAL_SRC_FILES    := fstab_non_AB_dynamic_partition_noSysext.qti
-endif
 endif
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_ETC)
 include $(BUILD_PREBUILT)
-else
-include $(CLEAR_VARS)
-LOCAL_MODULE       := fstab.qcom
-LOCAL_MODULE_TAGS  := optional
-LOCAL_MODULE_CLASS := ETC
-ifeq ($(ENABLE_AB), true)
-LOCAL_SRC_FILES    := fstab_AB_variant.qti
-else
-LOCAL_SRC_FILES    := fstab_non_AB_variant.qti
-endif
-LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_ETC)
-include $(BUILD_PREBUILT)
-endif
 
 include device/qcom/vendor-common/MergeConfig.mk
 
