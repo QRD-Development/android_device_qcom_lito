@@ -268,6 +268,7 @@ else
 endif
 
 PRODUCT_PACKAGES += init.qti.dcvs.sh
+PRODUCT_PACKAGES += android.hardware.lights-service.qti
 
 #----------------------------------------------------------------------
 # wlan specific
