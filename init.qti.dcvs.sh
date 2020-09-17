@@ -70,3 +70,19 @@
             echo 8 > $latfloor/polling_interval
         done
     done;
+
+    if [ -f /sys/devices/soc0/soc_id ]; then
+       soc_id=`cat /sys/devices/soc0/soc_id`
+    else
+       soc_id=`cat /sys/devices/system/soc/soc0/id`
+    fi
+
+    case "$soc_id" in
+        "434" | "459" )
+            for gold_memlat in $device/*qcom,devfreq-l3/*cpu6*-lat/devfreq/*cpu6*-lat
+            do
+                echo 25000 > $gold_memlat/mem_latency/wb_filter_ratio
+                echo 60 > $gold_memlat/mem_latency/wb_pct_thres
+            done;
+    ;;
+    esac
