@@ -240,8 +240,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.enableadvancedscan=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
-ro.crypto.volume.filenames_mode = "aes-256-cts" \
-ro.crypto.allow_encrypt_override = true
+ro.crypto.volume.filenames_mode = "aes-256-cts"
 
  # f2fs utilities
  PRODUCT_PACKAGES += \
