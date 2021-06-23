@@ -16,6 +16,9 @@ BOARD_DYNAMIC_PARTITION_ENABLE ?= true
 
 PRODUCT_SHIPPING_API_LEVEL := 30
 
+BOARD_SHIPPING_API_LEVEL := 30
+BOARD_API_LEVEL := 30
+
 # Temporary bring-up config -->
 ALLOW_MISSING_DEPENDENCIES := true
 
@@ -66,6 +69,9 @@ TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
 # Enable incremental FS feature
 PRODUCT_PROPERTY_OVERRIDES += ro.incremental.enable=1
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.soc.manufacturer=QTI
 
 # privapp-permissions whitelisting (To Fix CTS :privappPermissionsMustBeEnforced)
 PRODUCT_PROPERTY_OVERRIDES += ro.control_privapp_permissions=enforce
