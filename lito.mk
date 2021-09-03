@@ -169,6 +169,8 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := vendor/qcom/opensource/core-utils/
 DEVICE_MANIFEST_FILE := device/qcom/lito/manifest.xml
 DEVICE_MATRIX_FILE   := device/qcom/common/compatibility_matrix.xml
 
+PRODUCT_PACKAGES += init.qti.early_init.sh
+
 #Audio DLKM
 AUDIO_DLKM := audio_apr.ko
 AUDIO_DLKM += audio_q6_pdr.ko
