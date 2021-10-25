@@ -33,8 +33,10 @@ soc_id=`cat /sys/devices/soc0/soc_id` 2> /dev/null
 # Store soc_id in ro.vendor.qti.soc_id
 setprop ro.vendor.qti.soc_id $soc_id
 
-if [ "$soc_id" -eq 434 ] || [ "$soc_id" -eq 459 ]; then
+if [ "$soc_id" -eq 434 ]; then
     setprop ro.vendor.qti.soc_model SM6350
+elif [ "$soc_id" -eq 459 ]; then
+    setprop ro.vendor.qti.soc_model SM7225
 elif [ "$soc_id" -eq 400 ] || [ "$soc_id" -eq 440 ]; then
     setprop ro.vendor.qti.soc_model SM7250
 fi
