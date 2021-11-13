@@ -297,3 +297,7 @@ PRODUCT_COPY_FILES += \
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.2-service-qti
+
+# Vibrator
+PRODUCT_PACKAGES += \
+    vendor.qti.hardware.vibrator.service.lito
