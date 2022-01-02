@@ -8,8 +8,8 @@
 
 set -e
 
-DEVICE=**** FILL IN DEVICE NAME ****
-VENDOR=**** FILL IN VENDOR NAME ****
+DEVICE=lito
+VENDOR=qcom
 
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
