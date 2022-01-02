@@ -12,6 +12,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 # Include GSI keys
 $(call inherit-product, build/make/target/product/gsi_keys.mk)
 
+# Get non-open-source specific aspects
+$(call inherit-product, vendor/qcom/lito/lito-vendor.mk)
+
 # A/B
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.1-impl-qti \
