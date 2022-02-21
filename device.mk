@@ -356,6 +356,7 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.qcom.usb.rc \
     init.qti.qcv.rc \
+    init.recovery.qcom.rc \
     init.target.rc \
     fstab.default \
     ueventd.qcom.rc
