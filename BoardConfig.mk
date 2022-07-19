@@ -146,6 +146,5 @@ BOARD_VENDOR_SEPOLICY_DIRS += \
 # VINTF
 DEVICE_MANIFEST_FILE += \
     $(DEVICE_PATH)/configs/vintf/manifest.xml \
-    $(DEVICE_PATH)/configs/vintf/manifest_ab.xml \
     $(DEVICE_PATH)/configs/vintf/manifest-generic.xml \
     $(DEVICE_PATH)/configs/vintf/manifest-qva.xml
