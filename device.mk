@@ -301,11 +301,13 @@ PRODUCT_PACKAGES += \
     init.qcom.early_boot.sh \
     init.qcom.post_boot.sh \
     init.qcom.sh \
-    init.qcom.usb.sh
+    init.qcom.usb.sh \
+    init.qti.qcv.sh
 
 PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.qcom.usb.rc \
+    init.qti.qcv.rc \
     init.target.rc \
     fstab.default \
     ueventd.qcom.rc
