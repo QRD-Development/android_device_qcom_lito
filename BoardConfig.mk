@@ -7,6 +7,7 @@
 BUILD_BROKEN_DUP_RULES := true
 BOARD_VENDOR := qcom
 DEVICE_PATH := device/qcom/lito
+LITO_PREBUILT := device/qcom/lito-kernel
 
 # APEX
 DEXPREOPT_GENERATE_APEX_IMAGE := true
@@ -86,20 +87,31 @@ ODM_MANIFEST_FILES := $(DEVICE_PATH)/manifest-qva.xml
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 cgroup.memory=nokmem,nosocket loop.max_part=7
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
-BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
 BOARD_KERNEL_SEPARATED_DTBO := true
 BOARD_BOOTIMG_HEADER_VERSION := 2
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
-BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
 BOARD_KERNEL_IMAGE_NAME := Image
-TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_ADDITIONAL_FLAGS := DTC_EXT=$(shell pwd)/prebuilts/misc/linux-x86/dtc/dtc
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_SOURCE := kernel/qcom/lito
 TARGET_KERNEL_CONFIG := lineage_lito_defconfig
+
+# Kernel (Prebuilt)
+BOARD_KERNEL_BINARIES := kernel
+KERNEL_LD := LD=ld.lld
+TARGET_COMPILE_WITH_MSM_KERNEL := true
+BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
+TARGET_KERNEL_APPEND_DTB := false
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+TARGET_KERNEL_ARCH := arm64
+TARGET_KERNEL_HEADER_ARCH := arm64
+TARGET_FORCE_PREBUILT_KERNEL := true
+TARGET_PREBUILT_KERNEL := $(LITO_PREBUILT)/kernel/Image
+TARGET_PREBUILT_DTB := $(LITO_PREBUILT)/kernel/dtb.img
+BOARD_PREBUILT_DTBOIMAGE := $(LITO_PREBUILT)/kernel/dtbo.img
 
 # Kernel modules - Audio
 TARGET_MODULE_ALIASES += \
