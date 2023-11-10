@@ -97,7 +97,7 @@ BOARD_KERNEL_IMAGE_NAME := Image
 TARGET_KERNEL_ADDITIONAL_FLAGS := DTC_EXT=$(shell pwd)/prebuilts/misc/linux-x86/dtc/dtc
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_SOURCE := kernel/qcom/lito
-TARGET_KERNEL_CONFIG := lineage_lito_defconfig
+TARGET_KERNEL_CONFIG := lito-perf_defconfig
 
 # Kernel (Prebuilt)
 BOARD_KERNEL_BINARIES := kernel
