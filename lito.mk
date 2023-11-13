@@ -99,6 +99,7 @@ PRODUCT_PACKAGES += \
 # Overlay
 PRODUCT_PACKAGES += \
     LitoFrameworks \
+    LitoSettings \
     LitoSystemUI
 
 # Partitions
