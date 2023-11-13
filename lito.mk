@@ -100,7 +100,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     LitoFrameworks \
     LitoSettings \
-    LitoSystemUI
+    LitoSystemUI \
+    MiaLitoFrameworks
 
 # Partitions
 PRODUCT_BUILD_ODM_IMAGE := true
