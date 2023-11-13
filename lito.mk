@@ -68,6 +68,11 @@ PRODUCT_PACKAGES += \
 # FM
 BOARD_HAVE_QCOM_FM := false
 
+# Health
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.1-impl-qti \
+    android.hardware.health@2.1-service
+
 # Init
 PRODUCT_PACKAGES += \
     fstab.qcom \
