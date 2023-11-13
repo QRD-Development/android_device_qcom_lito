@@ -140,3 +140,7 @@ $(call inherit-product, vendor/qcom/lito/lito-vendor.mk)
 # WiFi Display
 PRODUCT_PACKAGES += \
     libwfdaac_vendor
+
+# WLAN
+PRODUCT_COPY_FILES += \
+    device/qcom/wlan/lito/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
