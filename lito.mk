@@ -91,6 +91,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.neuralnetworks@1.3.vendor
 
+# Overlay
+PRODUCT_PACKAGES += \
+    LitoFrameworks
+
 # Partitions
 PRODUCT_BUILD_ODM_IMAGE := true
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
