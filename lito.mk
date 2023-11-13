@@ -98,7 +98,8 @@ PRODUCT_PACKAGES += \
 
 # Overlay
 PRODUCT_PACKAGES += \
-    LitoFrameworks
+    LitoFrameworks \
+    LitoSystemUI
 
 # Partitions
 PRODUCT_BUILD_ODM_IMAGE := true
