@@ -1,0 +1,3 @@
+# Display
+persist.sys.sf.color_mode=9
+ro.surface_flinger.has_wide_color_display=false

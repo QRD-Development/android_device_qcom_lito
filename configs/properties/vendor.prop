@@ -1,0 +1,41 @@
+# Bluetooth
+persist.bluetooth.a2dp_offload.cap=sbc-aac-aptx-aptxhd-ldac
+persist.sys.fflag.override.settings_bluetooth_hearing_aid=true
+persist.vendor.qcom.bluetooth.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aac-ldac-aptxadaptiver2
+persist.vendor.qcom.bluetooth.aac_vbr_ctl.enabled=true
+persist.vendor.qcom.bluetooth.enable.splita2dp=true
+persist.vendor.qcom.bluetooth.soc=cherokee
+ro.bluetooth.a2dp_offload.supported=true
+vendor.bluetooth.soc=cherokee
+vendor.hw.fm.init=0
+vendor.qcom.bluetooth.soc=cherokee
+
+# Crypto
+ro.crypto.dm_default_key.options_format.version=2
+ro.crypto.volume.metadata.method=dm-default-key
+
+# Display
+ro.surface_flinger.set_idle_timer_ms=4000
+ro.surface_flinger.set_touch_timer_ms=4000
+ro.surface_flinger.set_display_power_timer_ms=1000
+ro.surface_flinger.use_content_detection_for_refresh_rate=true
+
+# DPM
+persist.vendor.dpmhalservice.enable=1
+
+# DRM
+drm.service.enabled=true
+
+# Factory Reset Protection
+ro.frp.pst=/dev/block/bootdevice/by-name/frp
+
+# RIL
+persist.vendor.radio.sib16_support=1
+persist.vendor.radio.custom_ecc=1
+persist.vendor.radio.procedure_bytes=SKIP
+persist.vendor.radio.apm_sim_not_pwdn=1
+persist.radio.multisim.config=dsds
+
+# Sensors
+persist.vendor.sensors.debug.ssc_qmi_debug=true
+persist.vendor.sensors.allow_non_default_discovery=true
