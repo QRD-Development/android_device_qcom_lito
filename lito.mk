@@ -69,8 +69,19 @@ PRODUCT_SOONG_NAMESPACES += \
 PRODUCT_BUILD_ODM_IMAGE := true
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
+# QTI Components
+TARGET_COMMON_QTI_COMPONENTS := \
+    all \
+    charging \
+    dsprpcd \
+    keymaster \
+    qseecomd
+
 # SDK
 BOARD_SYSTEMSDK_VERSIONS := 30
 
 # Storage
 PRODUCT_CHARACTERISTICS := nosdcard
+
+# Vendor
+$(call inherit-product, vendor/qcom/lito/lito-vendor.mk)
