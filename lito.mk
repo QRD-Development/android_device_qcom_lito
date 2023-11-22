@@ -58,7 +58,8 @@ BOARD_HAVE_QCOM_FM := false
 # Init
 PRODUCT_PACKAGES += \
     fstab.qcom \
-    fstab.qcom.ramdisk
+    fstab.qcom.ramdisk \
+    init.target.rc
 
 # Namespaces
 PRODUCT_SOONG_NAMESPACES += \
