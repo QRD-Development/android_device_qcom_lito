@@ -125,3 +125,10 @@ BOARD_SUPER_PARTITION_SIZE := 6442450944
 # Recovery
 BOARD_INCLUDE_RECOVERY_DTBO := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/init/fstab.qcom
+
+# VINTF
+DEVICE_MANIFEST_FILE += \
+    $(DEVICE_PATH)/configs/vintf/manifest.xml \
+    $(DEVICE_PATH)/configs/vintf/manifest_ab.xml \
+    $(DEVICE_PATH)/configs/vintf/manifest-generic.xml \
+    $(DEVICE_PATH)/configs/vintf/manifest-qva.xml
