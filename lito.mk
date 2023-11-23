@@ -127,3 +127,7 @@ PRODUCT_CHARACTERISTICS := nosdcard
 
 # Vendor
 $(call inherit-product, vendor/qcom/lito/lito-vendor.mk)
+
+# WiFi Display
+PRODUCT_PACKAGES += \
+    libwfdaac_vendor
