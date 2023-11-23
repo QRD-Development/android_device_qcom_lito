@@ -74,6 +74,10 @@ KERNEL_DEFCONFIG         := lito-perf_defconfig
 # GPS
 LOC_HIDL_VERSION = 4.0
 
+# Init
+TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_lito
+TARGET_RECOVERY_DEVICE_MODULES := libinit_lito
+
 # Partition
 AB_OTA_PARTITIONS := \
     boot \
