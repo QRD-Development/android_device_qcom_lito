@@ -109,11 +109,26 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # QTI Components
 TARGET_COMMON_QTI_COMPONENTS := \
-    all \
+    adreno \
+    alarm \
+    audio \
+    av \
+    bt \
     charging \
+    display \
     dsprpcd \
+    gps \
+    init \
     keymaster \
-    qseecomd
+    media \
+    nfc \
+    overlay \
+    perf \
+    qseecomd \
+    telephony \
+    usb \
+    wfd \
+    wlan
 
 # SDK
 BOARD_SYSTEMSDK_VERSIONS := 30
@@ -139,6 +154,13 @@ PRODUCT_CHARACTERISTICS := nosdcard
 
 # Vendor
 $(call inherit-product, vendor/qcom/lito/lito-vendor.mk)
+
+# Vibrator
+PRODUCT_PACKAGES += \
+    vendor.qti.hardware.vibrator.service.qti_lito
+
+PRODUCT_COPY_FILES += \
+    vendor/qcom/opensource/vibrator/excluded-input-devices.xml:vendor/etc/excluded-input-devices.xml
 
 # WiFi Display
 PRODUCT_PACKAGES += \
