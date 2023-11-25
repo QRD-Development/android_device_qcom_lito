@@ -47,12 +47,15 @@ void vendor_load_properties() {
     switch (soc_version) {
         case 400: // SM7250
             OverrideProperty("ro.vendor.qti.soc_model", "SM7250");
+            OverrideProperty("vendor.display.lcd_density", "540");
             break;
         case 434: // SM6350
             OverrideProperty("ro.vendor.qti.soc_model", "SM6350");
+            OverrideProperty("vendor.display.lcd_density", "440");
             break;
         case 459: // SM7225
             OverrideProperty("ro.vendor.qti.soc_model", "SM7225");
+            OverrideProperty("vendor.display.lcd_density", "440");
             break;
         default:
             LOG(ERROR) << "Unexpected Soc version: " << soc_version;
