@@ -189,4 +189,12 @@
          The user is forbidden from setting the brightness above this level.
          This value is a fraction between 3.5% and 100%. -->
     <item name="config_screenBrightnessSettingMaximumFloat" format="float" type="dimen">1.0</item>
+
+    <!-- Power Menu Reboot -->
+    <string-array translatable="false" name="config_rebootActionsList">
+        <item>restart</item>
+        <item>reboot_recovery</item>
+        <item>reboot_bootloader</item>
+        <item>reboot_fastboot</item>
+    </string-array>
 </resources>
