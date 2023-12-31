@@ -152,7 +152,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_CHARACTERISTICS := nosdcard
 
 # Vendor
-$(call inherit-product, vendor/qcom/lito/lito-vendor.mk)
+$(call inherit-product, vendor/qcom/qrd/lito/lito-vendor.mk)
 
 # Vibrator
 PRODUCT_PACKAGES += \
