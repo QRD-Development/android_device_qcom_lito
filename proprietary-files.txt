@@ -700,9 +700,6 @@ vendor/lib64/libperipheral_client.so
 # Public Libraries
 vendor/etc/public.libraries.txt
 
-# QCC
-vendor/lib64/vendor.qti.hardware.qccsyshal@1.0.so
-
 # QCV
 vendor/bin/init.qti.qcv.sh
 vendor/etc/init/init.qti.qcv.rc
