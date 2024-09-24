@@ -165,5 +165,8 @@ PRODUCT_PACKAGES += \
     libwfdaac_vendor
 
 # WLAN
+PRODUCT_PACKAGES += \
+    firmware_WCNSS_qcom_cfg.ini_symlink
+
 PRODUCT_COPY_FILES += \
     device/qcom/wlan/lito/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
