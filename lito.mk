@@ -63,7 +63,7 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.4.vendor \
     android.hardware.drm@1.4-service.clearkey \
-    libcrypto-v33
+    libcrypto_shim
 
 # Fastbootd
 PRODUCT_PACKAGES += \
