@@ -599,7 +599,6 @@ vendor/lib/libApeSwDec.so
 vendor/lib/libdsd2pcm.so
 vendor/lib/libfastcrc.so
 vendor/lib/libFlacSwDec.so
-vendor/lib/libI420colorconvert.so
 vendor/lib/libmm-color-convertor.so
 vendor/lib/libMpeg4SwEncoder.so
 vendor/lib/libmulawdec.so
@@ -622,7 +621,6 @@ vendor/lib/libOmxVideoDSMode.so;DISABLE_CHECKELF
 vendor/lib/libOmxWmaDec.so
 vendor/lib/libstagefright_soft_qtiflacdec.so
 vendor/lib/libswvdec.so
-vendor/lib64/libI420colorconvert.so
 vendor/lib64/libmm-color-convertor.so
 vendor/lib64/libmulawdec.so
 vendor/lib64/libstagefright_soft_qtiflacdec.so
